@@ -1,1 +1,1 @@
-addTest(adapter)
+addTest(TARGET adapter SOURCES "adapter.cpp")
