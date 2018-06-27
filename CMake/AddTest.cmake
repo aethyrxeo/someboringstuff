@@ -1,0 +1,8 @@
+function(addTest target_name)
+	add_executable(${target_name} "")
+	target_sources(${target_name} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/${target_name}.cpp")
+	target_include_directories(${target_name} PUBLIC ${Boost_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/include)
+    if(${Boost_LIBRARY_DIR} NOT STREQUAL "")
+	    target_link_libraries(${target_name} PUBLIC (${Boost_LIBRARY_DIR})
+    endif()
+endfunction(addTest)

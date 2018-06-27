@@ -1,0 +1,13 @@
+FUNCTION(boost_map_components_to_libnames libs out_libs)
+    FOREACH(l ${libs})
+		if(WIN32)
+			FIND_LIBRARY(LIB_${l} NAMES libboost_${l}-vc141-mt-gd-x64-1_66.lib PATHS ${BOOST_LIBRARYDIR})
+		else(WIN32)
+			FIND_LIBRARY(LIB_${l} NAMES libboost_${l}.so)
+		endif(WIN32)
+        MARK_AS_ADVANCED(LIB_${l})
+        LIST(APPEND boost_libs ${LIB_${l}})
+    ENDFOREACH(l)
+
+    SET(${out_libs} ${boost_libs} PARENT_SCOPE)
+ENDFUNCTION()
